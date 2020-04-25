@@ -171,3 +171,13 @@ modelo_de_datos.jpg
 .springBeans
 .sts4-cache
 
+######################
+####### NetBeans #######
+######################
+
+nbproject/private/
+build/
+nbbuild/
+dist/
+nbdist/
+.nb-gradle/
