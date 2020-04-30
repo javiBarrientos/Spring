@@ -1,13 +1,21 @@
 package org.formacio.component;
 
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
+import javax.annotation.PostConstruct;
 
-@Component
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+
+@Service
 public class ServeiAlumnat {
 	
 	@Autowired
-	private RepositoriAlumnesMemoria repositorio;
+	private RepositoriAlumnes alumnado;
+	
+	@PostConstruct
+	public void init() {
+		alumnado.altaAlumne(1, "Antonia");
+		alumnado.altaAlumne(2, "Joan");
+	}
 	
 	/**
 	 * ha de donar d'alta a la base de dades d'alumnes l'alumne indicat amb 
@@ -17,10 +25,11 @@ public class ServeiAlumnat {
 	 */
 	public boolean matricula (int id, String alumne) {
 		if (alumne != null) {
-			repositorio.altaAlumne(id, alumne);
+			alumnado.altaAlumne(id, alumne);
 			return true;
+		} else {
+			return false;
 		}
-		return false;
 	}
 	
 }
