@@ -5,6 +5,7 @@ Este curso cuenta con 4 semanas de contenido, cada semana indicare que ficheros 
 Cada projecto contendra un README para hacer una breve explicacion de que funcionamiento tiene.
 
 > Primera semana
+- setmana_1_practica
 
 > Segunda semana
 
