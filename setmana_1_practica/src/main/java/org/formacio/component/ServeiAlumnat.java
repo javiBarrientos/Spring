@@ -32,4 +32,8 @@ public class ServeiAlumnat {
 		}
 	}
 	
+	public int numeroDeAlumnos() {
+		return alumnado.llistaAlumnes().size();
+	}
+	
 }
