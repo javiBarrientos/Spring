@@ -22,7 +22,7 @@ public class RepositoriAlumnesMemoria implements RepositoriAlumnes {
 
 	@Override
 	public void altaAlumne(int id, String nom) {
-		bbdd.put(id,  nom);
+		bbdd.put(id, nom);
 	}
 
 	@Override
