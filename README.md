@@ -8,6 +8,7 @@ Cada projecto contendra un README para hacer una breve explicacion de que funcio
 - setmana_1_practica
 
 > Segunda semana
+- setmana_2_practica
 
 > Tercera semana
 
