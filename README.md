@@ -7,6 +7,7 @@ Este curso cuenta con 4 semanas de contenido, cada semana indicare que ficheros 
 - setmana_1_practica
 
 > Segunda semana
+- setmana_2_practica
 
 > Tercera semana
 
