@@ -37,14 +37,14 @@ public class Controlador {
 	
 	// test_contacte()
 	
-	@RequestMapping(path="/contacte/{id}")
+	@RequestMapping(path="/contacte/{id}", produces = {MediaType.APPLICATION_JSON_VALUE, MediaType.APPLICATION_XML_VALUE})
 	@ResponseBody
 	Persona devolverPersona(@PathVariable String id) {
 		if (agenda.recupera(id) == null) {
 			throw new OperationException();
-		} else {
+		} else
 			return agenda.recupera(id);
-		}
+		
 	}
 	
 	// test_nou_contacte
