@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 @Controller
@@ -28,16 +29,21 @@ public class Controlador {
 	
 	@RequestMapping(path="/telefon")
 	@ResponseBody
-	String numeroDeTelefono(String id) {
+	String numeroDeTelefono(@RequestParam String id) {
 		String numero = agenda.recupera(id).getTelefon();
 		return numero;
 	}
 	
 	// test_contacte()
-	@RequestMapping(path="/contacte/{id}")
+	
+	@RequestMapping(path="/contacte/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
 	@ResponseBody
 	Persona devolverPersona(@PathVariable String id) {
-		Persona json = agenda.recupera(id);
-		return json;
+		if (agenda.recupera(id) == null) {
+			throw new OperationException();
+		} else {
+			return agenda.recupera(id);
+		}
+			
 	}
 }
