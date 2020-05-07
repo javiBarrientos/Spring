@@ -7,6 +7,7 @@ import org.springframework.http.MediaType;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -36,7 +37,7 @@ public class Controlador {
 	
 	// test_contacte()
 	
-	@RequestMapping(path="/contacte/{id}", produces = {MediaType.APPLICATION_JSON_VALUE})
+	@RequestMapping(path="/contacte/{id}")
 	@ResponseBody
 	Persona devolverPersona(@PathVariable String id) {
 		if (agenda.recupera(id) == null) {
@@ -44,6 +45,13 @@ public class Controlador {
 		} else {
 			return agenda.recupera(id);
 		}
-			
+	}
+	
+	// test_nou_contacte
+	
+	@RequestMapping(path="/afegir", method=RequestMethod.POST)
+	@ResponseBody
+	void crearUsuario(String id, String name, String telefono) {
+		agenda.inserta(id, name, telefono);
 	}
 }
