@@ -35,6 +35,7 @@ public class Alumne {
 		result = prime * result + ((nom == null) ? 0 : nom.hashCode());
 		return result;
 	}
+	
 	@Override
 	public boolean equals(Object obj) {
 		if (this == obj)
