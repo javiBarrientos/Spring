@@ -3,15 +3,12 @@ package org.formacio.setmana2.servei;
 import java.util.ArrayList;
 import java.util.List;
 
-import javax.persistence.EntityManager;
-import javax.persistence.PersistenceContext;
 import javax.transaction.Transactional;
 
 import org.formacio.setmana2.domini.Matricula;
 import org.formacio.setmana2.repositori.EdatIncorrecteException;
 import org.formacio.setmana2.repositori.RepositoriEscola;
 import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Component;
 import org.springframework.stereotype.Service;
 
 @Service
