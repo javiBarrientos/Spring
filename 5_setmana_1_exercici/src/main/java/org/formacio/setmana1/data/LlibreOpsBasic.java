@@ -1,20 +1,33 @@
 package org.formacio.setmana1.data;
 
 
+import javax.persistence.EntityManager;
+import javax.persistence.PersistenceContext;
+
 import org.formacio.setmana1.domini.Llibre;
 import org.formacio.setmana1.domini.Recomanacio;
+import org.springframework.stereotype.Component;
 
 /**
  * Modifica aquesta classe per tal que sigui un component Spring que realitza les 
  * operacions de persistencia tal com indiquen les firmes dels metodes
  */
+
+@Component
 public class LlibreOpsBasic {
+	
+	@PersistenceContext
+	private EntityManager em;
 	
 	/**
 	 * Retorna el llibre amb l'ISBN indicat o, si no existeix, llança un LlibreNoExisteixException
 	 */
-	public Llibre carrega (String isbn) throws LlibreNoExisteixException {
-		return null;
+	public Llibre carrega(String isbn) throws LlibreNoExisteixException {
+		if (isbn == null) {
+			return em.find(Llibre.class, isbn);
+		} else {
+			throw new LlibreNoExisteixException();
+		}
 	}
 	
 	/**
