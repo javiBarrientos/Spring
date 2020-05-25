@@ -7,7 +7,6 @@ import javax.transaction.Transactional;
 
 import org.formacio.setmana1.domini.Llibre;
 import org.formacio.setmana1.domini.Recomanacio;
-import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Component;
 
 /**
@@ -54,8 +53,16 @@ public class LlibreOpsBasic {
 	 * @param isbn del llibre a eliminar
 	 * @return true si s'ha esborrat el llibre, false si no existia
 	 */
+	@Transactional
 	public boolean elimina(String isbn) {
-		return true;
+		Llibre libro = em.find(Llibre.class, isbn);
+		
+		if (isbn == libro.getIsbn()) {
+			em.remove(libro);
+			return true;
+		} else {
+			return false;
+		}
 	}
 	
 	/**
