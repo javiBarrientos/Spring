@@ -25,8 +25,10 @@ public class LlibreOpsBasic {
 	 */
 	
 	public Llibre carrega(String isbn) throws LlibreNoExisteixException {
-		if (isbn != null) {
-			return em.find(Llibre.class, isbn);
+		Llibre libro = em.find(Llibre.class, isbn);
+		
+		if (libro != null) {
+			return libro;
 		} else {
 			throw new LlibreNoExisteixException();
 		}
@@ -68,7 +70,9 @@ public class LlibreOpsBasic {
 	/**
 	 * Guarda a bbdd l'estat del llibre indicat
 	 */
+	@Transactional
 	public void modifica(Llibre llibre) {
+		em.merge(llibre);
 	}
 	
 	/**
@@ -76,15 +80,28 @@ public class LlibreOpsBasic {
 	 * (Aquest metode no llanca excepcions!)
 	 */
 	public boolean existeix(String isbn) {
-		return false;
+		try {
+			this.carrega(isbn);
+			return true;
+		} catch(LlibreNoExisteixException e) {
+			return false;
+		}
+		
 	}
 
 	/**
 	 * Retorna quina es la recomanacio per el llibre indicat
 	 * Si el llibre indicat no existeix, retorna null
+	 * @throws LlibreNoExisteixException 
 	 */
-	public Recomanacio recomenacioPer(String isbn) {
-		return null;
+	@Transactional
+	public Recomanacio recomenacioPer(String isbn) throws LlibreNoExisteixException  {
+		if (this.existeix(isbn)) {
+			Llibre libro = this.carrega(isbn);
+			return libro.getRecomanacio();
+		} else {
+			return null;
+		}
 	}
 	
 }
